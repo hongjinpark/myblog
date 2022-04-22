@@ -34,4 +34,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
