@@ -19,7 +19,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 20, unique = true)
     private String username; //아이디
 
     @Column(nullable = false, length = 100)
@@ -28,7 +28,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email; //이메일
 
-    @Column(nullable = false, length =50)
+    @Column(nullable = false, length = 20)
     private String nickname; //닉네임
 
     @Enumerated(EnumType.STRING)
