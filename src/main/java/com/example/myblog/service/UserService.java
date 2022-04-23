@@ -18,6 +18,7 @@ public class UserService {
     @Transactional
     public Long save(User user) {
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashPw);
         return userRepository.save(user).getId();
     }
 }
