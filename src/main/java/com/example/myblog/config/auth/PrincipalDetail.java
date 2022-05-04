@@ -1,6 +1,7 @@
 package com.example.myblog.config.auth;
 
 import com.example.myblog.domain.user.User;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,10 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@RequiredArgsConstructor
+@Getter
 public class PrincipalDetail implements UserDetails {
 
-    private final User user;
+    private User user;
+
+    public PrincipalDetail(User user) {
+        this.user = user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
