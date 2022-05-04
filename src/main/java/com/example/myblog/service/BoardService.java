@@ -22,4 +22,11 @@ public class BoardService {
         boardSaveRequestDto.setUser(user);
         return boardRepository.save(boardSaveRequestDto.toEntity()).getId();
     }
+
+    /**
+     * 글목록 로직
+     */
+    public List<Board> findAll() {
+        return boardRepository.findAll();
+    }
 }
