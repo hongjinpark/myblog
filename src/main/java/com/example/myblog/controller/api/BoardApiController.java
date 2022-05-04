@@ -2,6 +2,8 @@ package com.example.myblog.controller.api;
 
 
 import com.example.myblog.config.auth.PrincipalDetail;
+import com.example.myblog.dto.board.BoardSaveRequestDto;
+import com.example.myblog.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +21,6 @@ public class BoardApiController {
      */
     @PostMapping("/api/v1/board")
     public Long save(@RequestBody BoardSaveRequestDto boardSaveRequestDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        return boardSaveRequestDto.save(boardSaveRequestDto, principalDetail.getUser());
+        return boardService.save(boardSaveRequestDto, principalDetail.getUser());
     }
 }
