@@ -16,7 +16,6 @@
             <div th:if="${param.logout}" class="alert alert-primary" role="alert">
                 로그아웃이 완료되었습니다.
             </div>
-
             <div class="form-floating m-3">
                 <input type="text" name="username" class="form-control" id="username" placeholder="아이디를 입력하세요." required="required">
                 <label for="username">아이디</label>
@@ -30,8 +29,9 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-success" id="btn-save">로그인</button>
+            <button class="w-100 btn btn-lg btn-success" id="btn-login">로그인</button>
         </form>
+
     </div>
 </main>
 
