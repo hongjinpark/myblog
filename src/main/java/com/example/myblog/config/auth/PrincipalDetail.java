@@ -2,7 +2,6 @@ package com.example.myblog.config.auth;
 
 import com.example.myblog.domain.user.User;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -24,6 +23,20 @@ public class PrincipalDetail implements UserDetails {
         collection.add(() -> user.getRoleKey());
 
         return collection;
+    }
+    //사용자 이메일
+    public String getEmail() {
+        return user.getEmail();
+    }
+
+    //사용자 닉네임
+    public String getNickname() {
+        return user.getNickname();
+    }
+
+    //사용자 pk
+    public Long getId() {
+        return user.getId();
     }
 
     //사용자 패스워드
