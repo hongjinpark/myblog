@@ -39,12 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/auth/user/login")
-                .loginProcessingUrl("/auth/api/v1/user/login")
+                .loginProcessingUrl("/auth/user/login")
                 .defaultSuccessUrl("/");
-    }
-
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }
