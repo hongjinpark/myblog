@@ -32,4 +32,9 @@ public class Board extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     private User user;
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
