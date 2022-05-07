@@ -4,6 +4,7 @@ package com.example.myblog.service;
 import com.example.myblog.domain.board.Board;
 import com.example.myblog.domain.board.BoardRepository;
 import com.example.myblog.domain.user.User;
+import com.example.myblog.dto.board.BoardUpdateRequestDto;
 import com.example.myblog.dto.board.BoardSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,15 @@ public class BoardService {
     @Transactional
     public void deleteById(Long id) {
         boardRepository.deleteById(id);
+    }
+
+    /**
+     * 글수정 로직
+     */
+    @Transactional
+    public Long update(Long id, BoardUpdateRequestDto boardUpdateRequestDto) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
+        board.update(boardUpdateRequestDto.getTitle(), boardUpdateRequestDto.getContent());
+        return id;
     }
 }
