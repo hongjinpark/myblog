@@ -7,6 +7,8 @@ import com.example.myblog.domain.user.User;
 import com.example.myblog.dto.board.BoardUpdateRequestDto;
 import com.example.myblog.dto.board.BoardSaveRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,8 +29,9 @@ public class BoardService {
     /**
      * 글목록 로직
      */
-    public List<Board> findAll() {
-        return boardRepository.findAll();
+    @Transactional(readOnly = true)
+    public Page<Board> findAll(Pageable pageable) {
+        return boardRepository.findAll(pageable);
     }
 
     /**
