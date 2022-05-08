@@ -2,6 +2,7 @@ package com.example.myblog.domain.board;
 
 
 import com.example.myblog.domain.BaseTimeEntity;
+import com.example.myblog.domain.reply.Reply;
 import com.example.myblog.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Getter
@@ -32,6 +34,9 @@ public class Board extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     private User user;
+
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+    private List<Reply> replyList;
 
     public void update(String title, String content) {
         this.title = title;
