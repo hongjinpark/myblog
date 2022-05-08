@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -30,8 +29,8 @@ public class BoardService {
      * 글목록 로직
      */
     @Transactional(readOnly = true)
-    public Page<Board> findAll(Pageable pageable) {
-        return boardRepository.findAll(pageable);
+    public Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
+        return boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
     }
 
     /**
