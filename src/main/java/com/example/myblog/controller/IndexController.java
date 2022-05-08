@@ -22,7 +22,7 @@ public class IndexController {
     public String index(Model model, @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<Board> boards = boardService.findAll(pageable);
         int startPage = Math.max(1, boards.getPageable().getPageNumber() - 4);
-        int endPage = Math.min((boards.getTotalPages(), boards.getPageable().getPageNumber() + 4);
+        int endPage = Math.min((boards.getTotalPages()), boards.getPageable().getPageNumber() + 4);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("boards", boards);
