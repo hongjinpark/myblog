@@ -1,6 +1,7 @@
 package com.example.myblog.controller;
 
 
+import com.example.myblog.domain.board.BoardRepository;
 import com.example.myblog.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class BoardController {
 
     private final BoardService boardService;
+    private final BoardRepository boardRepository;
 
     @GetMapping("/board/save")
     public String save() {
@@ -26,7 +28,7 @@ public class BoardController {
     @GetMapping("/board/{id}")
     public String detail(@PathVariable Long id, Model model) {
         model.addAttribute("board", boardService.detail(id));
-        boardService.updateCount(id);
+        boardRepository.updateCount(id);
         return "layout/board/board-detail";
     }
 
