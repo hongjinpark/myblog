@@ -31,13 +31,13 @@
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <li class="page-item" th:classappend="${1 == boards.pageable.pageNumber + 1} ? 'disabled' : '' ">
-            <a class="page-link" th:href="@{/(page=${boards.pageable.pageNumber - 1})}">Previous</a>
+            <a class="page-link" th:href="@{/(page=${boards.pageable.pageNumber - 1}, search=${param.search})}">Previous</a>
         </li>
         <li class="page-item" th:classappend="${i == boards.pageable.pageNumber + 1} ? 'active' : '' " th:each="i : ${#numbers.sequence(startPage, endPage)}">
-            <a class="page-link" th:href="@{/(page=${i - 1})}" th:text="${i}">1</a>
+            <a class="page-link" th:href="@{/(page=${i - 1}, search=${param.search})}" th:text="${i}">1</a>
         </li>
         <li class="page-item" th:classappend="${boards.totalPages == boards.pageable.pageNumber + 1} ? 'disabled' : '' ">
-            <a class="page-link" th:href="@{/(page=${boards.pageable.pageNumber + 1})}">Next</a>
+            <a class="page-link" th:href="@{/(page=${boards.pageable.pageNumber + 1}, search=${param.search})}">Next</a>
         </li>
     </ul>
 </nav>
