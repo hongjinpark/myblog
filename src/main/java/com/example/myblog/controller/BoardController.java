@@ -19,9 +19,14 @@ public class BoardController {
         return "layout/board/board-save";
     }
 
+
+    /**
+     *글상세 페이지
+     */
     @GetMapping("/board/{id}")
     public String detail(@PathVariable Long id, Model model) {
         model.addAttribute("board", boardService.detail(id));
+        boardService.updateCount(id);
         return "layout/board/board-detail";
     }
 
