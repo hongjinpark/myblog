@@ -4,6 +4,7 @@ package com.example.myblog.domain.board;
 import com.example.myblog.domain.BaseTimeEntity;
 import com.example.myblog.domain.reply.Reply;
 import com.example.myblog.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,6 +36,8 @@ public class Board extends BaseTimeEntity {
     @JoinColumn(name = "userId")
     private User user;
 
+    @OrderBy("id desc")
+    @JsonIgnoreProperties({"board"})
     @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
     private List<Reply> replyList;
 
