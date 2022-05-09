@@ -6,10 +6,7 @@ import com.example.myblog.domain.reply.Reply;
 import com.example.myblog.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -22,5 +19,10 @@ public class ReplyApiController {
                      @RequestBody Reply reply,
                      @AuthenticationPrincipal PrincipalDetail principalDetail) {
         replyService.replySave(boardId, reply, principalDetail.getUser());
+    }
+
+    @DeleteMapping("/api/v1/board/{boardId}/reply/{replyId}")
+    public void delete(@PathVariable Long replyId) {
+        replyService.replyDelete(replyId);
     }
 }
