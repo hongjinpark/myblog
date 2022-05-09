@@ -25,4 +25,9 @@ public class ReplyService {
 
         replyRepository.save(reply);
     }
+
+    @Transactional
+    public void replyDelete(Long replyId) {
+        replyRepository.deleteById(replyId);
+    }
 }
