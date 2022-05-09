@@ -28,5 +28,18 @@ let replyIndex = {
         });
     },
 
+    replyDelete: function (boardId, replyId) {
+        $.ajax({
+            type: "DELETE",
+            url: `/api/v1/board/${boardId}/reply/${replyId}`,
+            dataType: "text"
+        }).done(function (res) {
+            alert("댓글삭제가 완료되었습니다.");
+            location.href = `/board/${boardId}`;
+        }).fail(function (err) {
+            alert(JSON.stringify(err));
+        });
+    },
+
 }
 replyIndex.init();
